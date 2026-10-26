@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root[data-theme='dark'] {
+  --bg: 11 18 32;
+  --bg2: 17 28 48;
+  --card: 17 28 48;
+  --line: 38 54 82;
+  --ink: 248 250 252;
+  --mute: 148 163 184;
+  --brand: 59 130 246;
+  --teal: 20 184 166;
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  --bg: 248 250 252;
+  --bg2: 238 243 249;
+  --card: 255 255 255;
+  --line: 214 222 234;
+  --ink: 15 23 42;
+  --mute: 71 85 105;
+  --brand: 37 99 235;
+  --teal: 13 148 136;
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { @apply bg-bg text-ink font-sans antialiased; }
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgb(var(--line) / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--line) / 0.35) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+}
+
+.card { @apply rounded-2xl border border-line bg-card; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand; }
+.btn-primary { @apply btn bg-brand text-white hover:brightness-110; }
+.btn-ghost { @apply btn border border-line text-ink hover:border-brand hover:text-brand; }
+.chip { @apply inline-flex items-center rounded-full border border-line bg-bg2 px-3 py-1 text-xs font-medium text-mute; }
+.section { @apply mx-auto max-w-6xl px-5 py-20 sm:py-24; }
+.eyebrow { @apply font-mono text-xs uppercase tracking-widest text-teal; }
+.h2 { @apply mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl; }
+:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 2px; }
